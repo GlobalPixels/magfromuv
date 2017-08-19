@@ -30,7 +30,11 @@ int main(int argc, char *argv[]) {
   
   for (int y = 0; y < uGrid->numRows; y++) {
     for (int x = 0; x < uGrid->numCols; x++) {
-	uGrid->data[y][x] = sqrtf(powf(uGrid->data[y][x], 2.0) + powf(vGrid->data[y][x], 2.0));
+	if (uGrid->data[y][x] != uGrid->noData && vGrid->data[y][x] != vGrid->noData) {
+		uGrid->data[y][x] = sqrtf(powf(uGrid->data[y][x], 2.0) + powf(vGrid->data[y][x], 2.0));
+	} else {
+		uGrid->data[y][x] = uGrid->noData;
+	}
     }
   }
   
