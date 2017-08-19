@@ -250,8 +250,9 @@ void WriteFloatTifGrid(const char *file, FloatGrid *grid, const char *artist, co
   
   TIFFSetField(tif, TIFFTAG_IMAGEWIDTH, grid->numCols);
   TIFFSetField(tif, TIFFTAG_IMAGELENGTH, grid->numRows);
-  TIFFSetField(tif, TIFFTAG_TILEWIDTH,  256);
-  TIFFSetField(tif, TIFFTAG_TILELENGTH,  256);
+  //TIFFSetField(tif, TIFFTAG_TILEWIDTH,  256);
+  //TIFFSetField(tif, TIFFTAG_TILELENGTH,  256);
+  TIFFSetField(tif, TIFFTAG_ROWSPERSTRIP,  1);
   TIFFSetField(tif, TIFFTAG_PHOTOMETRIC, PHOTOMETRIC_MINISBLACK);
 	char buf[100];
   sprintf(buf, "%f", grid->noData);
